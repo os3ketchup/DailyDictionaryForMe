@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/MyAndroidProjects/DailyDictionaryForMe/app/src/main/res/drawable/corner_background.xml" value="0.1185" />
+        <entry key="..\:/MyAndroidProjects/DailyDictionaryForMe/app/src/main/res/drawable/ic_settings.xml" value="0.117" />
+        <entry key="..\:/MyAndroidProjects/DailyDictionaryForMe/app/src/main/res/drawable/ic_words.xml" value="0.1185" />
+        <entry key="..\:/MyAndroidProjects/DailyDictionaryForMe/app/src/main/res/layout/activity_main.xml" value="0.21979166666666666" />
+        <entry key="..\:/MyAndroidProjects/DailyDictionaryForMe/app/src/main/res/layout/dialog_category.xml" value="0.22826086956521738" />
+        <entry key="..\:/MyAndroidProjects/DailyDictionaryForMe/app/src/main/res/layout/fragment_add_word.xml" value="0.264" />
+        <entry key="..\:/MyAndroidProjects/DailyDictionaryForMe/app/src/main/res/layout/fragment_basic.xml" value="0.264" />
+        <entry key="..\:/MyAndroidProjects/DailyDictionaryForMe/app/src/main/res/layout/fragment_category.xml" value="0.22327898550724637" />
+        <entry key="..\:/MyAndroidProjects/DailyDictionaryForMe/app/src/main/res/layout/fragment_favorite.xml" value="0.22327898550724637" />
+        <entry key="..\:/MyAndroidProjects/DailyDictionaryForMe/app/src/main/res/layout/fragment_host.xml" value="0.22327898550724637" />
+        <entry key="..\:/MyAndroidProjects/DailyDictionaryForMe/app/src/main/res/layout/fragment_settings.xml" value="0.22327898550724637" />
+        <entry key="..\:/MyAndroidProjects/DailyDictionaryForMe/app/src/main/res/layout/fragment_word.xml" value="0.22327898550724637" />
+        <entry key="..\:/MyAndroidProjects/DailyDictionaryForMe/app/src/main/res/layout/item_rv.xml" value="0.23802083333333332" />
+        <entry key="..\:/MyAndroidProjects/DailyDictionaryForMe/app/src/main/res/layout/item_rv_category.xml" value="0.23802083333333332" />
+        <entry key="..\:/MyAndroidProjects/DailyDictionaryForMe/app/src/main/res/layout/item_rv_words.xml" value="0.23802083333333332" />
+        <entry key="..\:/MyAndroidProjects/DailyDictionaryForMe/app/src/main/res/menu/item_bottom.xml" value="0.6" />
+        <entry key="..\:/MyAndroidProjects/DailyDictionaryForMe/app/src/main/res/menu/item_bottom_settings.xml" value="0.23385416666666667" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
