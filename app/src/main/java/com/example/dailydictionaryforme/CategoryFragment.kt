@@ -11,6 +11,7 @@ import com.example.dailydictionaryforme.adapter.CategoryAdapter
 import com.example.dailydictionaryforme.data.Category
 import com.example.dailydictionaryforme.database.MyDatabase
 import com.example.dailydictionaryforme.databinding.FragmentCategoryBinding
+import com.google.android.material.textfield.TextInputEditText
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
 
@@ -54,11 +55,8 @@ class CategoryFragment : Fragment() {
         database.categoryDao().getAllCategories().subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe {
-                categoryAdapter = CategoryAdapter(requireContext(),it,object :CategoryAdapter.RvClick{
-                    override fun itemClick(category: Category) {
-
-                    }
-                })
+                categoryAdapter = CategoryAdapter(requireContext(),it,
+                )
                 binding.rvCategory.adapter = categoryAdapter
             }
 

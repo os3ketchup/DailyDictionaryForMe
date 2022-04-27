@@ -13,7 +13,7 @@ import com.example.dailydictionaryforme.databinding.ActivityMainBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-
+var incrementer = 0
 private const val TAG = "MainActivity"
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding

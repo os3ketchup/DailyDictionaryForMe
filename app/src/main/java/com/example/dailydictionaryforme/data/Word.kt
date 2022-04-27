@@ -5,7 +5,9 @@ import androidx.room.ForeignKey
 import androidx.room.Index
 import androidx.room.PrimaryKey
 
-@Entity()
+@Entity(
+    foreignKeys = [ForeignKey(entity = Category::class, parentColumns = ["category_id"], childColumns = ["category_id"], onDelete = ForeignKey.CASCADE, onUpdate = ForeignKey.CASCADE)]
+)
 data class Word(
     val category_id:Int?=null,
     @PrimaryKey(autoGenerate = true)

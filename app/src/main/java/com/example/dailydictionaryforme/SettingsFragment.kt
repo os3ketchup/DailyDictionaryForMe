@@ -65,7 +65,7 @@ class SettingsFragment : Fragment() {
                         .inflate(R.layout.dialog_category, null, false)
 
                     customDialog.findViewById<Button>(R.id.button_category).setOnClickListener {
-                        val name = customDialog.findViewById<EditText>(R.id.tv_item_dialog)
+                        val name = customDialog.findViewById<EditText>(R.id.et_dialog)
 
                         val    categoryName = name.text.toString()
                         category = Category(name_category = categoryName)
