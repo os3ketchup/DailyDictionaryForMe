@@ -31,9 +31,6 @@ interface CategoryDao {
     @Delete
     fun deleteCategory(category: Category)
 
-
-
-
     @Update
     fun editCategory(category: Category)
 

@@ -65,16 +65,7 @@ class CategoryAdapter(var context: Context, var list: List<Category>) :
                         R.id.ic_delete -> {
                             incrementer++
                             database.categoryDao().deleteCategory(category)
-/*                            if (database.wordDao().getAllWords().isNotEmpty()) {
-                                val t = database.wordDao().getAllWords()[category.category_id!! - 1]
-                                for (i in database.categoryDao().getCategoryByWord()) {
 
-                                    database.wordDao().deleteWord(i.wordList[category.category_id!!-2])
-                                }
-
-
-
-                            }*/
 
                             true
                         }
@@ -97,7 +88,6 @@ class CategoryAdapter(var context: Context, var list: List<Category>) :
                     popupMenu.show()
                 }
 
-                true
 
             }
 

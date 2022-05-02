@@ -1,18 +1,23 @@
 package com.example.dailydictionaryforme
 
 import android.content.ContentValues.TAG
+import android.database.Observable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.WindowManager
 import android.widget.Toast
 import com.example.dailydictionaryforme.data.Category
 import com.example.dailydictionaryforme.data.CategoryData
 import com.example.dailydictionaryforme.data.Word
 import com.example.dailydictionaryforme.database.MyDatabase
 import com.example.dailydictionaryforme.databinding.ActivityMainBinding
+import io.reactivex.rxjava3.plugins.RxJavaPlugins
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import timber.log.Timber
+
 var incrementer = 0
 private const val TAG = "MainActivity"
 class MainActivity : AppCompatActivity() {
@@ -25,19 +30,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         supportActionBar?.hide()
 
-
-       /*  db = MyDatabase.getInstance(this)
-        val category1 = Category(name_category = "Dunyo")
-        val category2 = Category(name_category = "Texnologiya")
-        val category3 = Category(name_category = "Mahalliy")*/
-
-
-
-
-        /*db.categoryDao().addAllCategory(category1, category2, category3)
-
-        val data = db.categoryDao().getCategoryByWord()
-        Toast.makeText(this, data.toString(), Toast.LENGTH_SHORT).show()*/
+        RxJavaPlugins.setErrorHandler(Timber::e)
 
     }
 

@@ -55,8 +55,7 @@ class CategoryFragment : Fragment() {
         database.categoryDao().getAllCategories().subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe {
-                categoryAdapter = CategoryAdapter(requireContext(),it,
-                )
+                categoryAdapter = CategoryAdapter(requireContext(),it,)
                 binding.rvCategory.adapter = categoryAdapter
             }
 

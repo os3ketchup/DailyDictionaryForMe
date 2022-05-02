@@ -14,8 +14,10 @@ import com.example.dailydictionaryforme.data.Category
 import com.example.dailydictionaryforme.data.Word
 import com.example.dailydictionaryforme.database.MyDatabase
 import com.example.dailydictionaryforme.databinding.FragmentAddWordBinding
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.schedulers.Schedulers
 
-    lateinit var map:HashMap<String,Int>
+lateinit var map:HashMap<String,Int>
 class AddWordFragment : Fragment() {
 
     lateinit var category: Category
@@ -65,9 +67,16 @@ class AddWordFragment : Fragment() {
             val wordId = mapI[binding.autoComplete.text.toString()]
             val imageWord = 1
             word = Word(category_id = wordId, name_word = wordName, description = wordDesc, image = imageWord)
-            database.wordDao().addWord(word)
+            /*database.wordDao().addWord(word)*/
 
-            Toast.makeText(requireContext(), "${database.wordDao().getWord().name_word}", Toast.LENGTH_SHORT).show()
+            database.wordDao().addWord(word)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe{
+                        t->
+                }
+
+            /*Toast.makeText(requireContext(), "${database.wordDao().getWord().name_word}", Toast.LENGTH_SHORT).show()*/
         }
 
     }
