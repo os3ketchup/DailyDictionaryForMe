@@ -25,6 +25,9 @@
         <action
             android:id="@+id/action_settingsFragment_to_hostFragment"
             app:destination="@id/hostFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_updateWordFragment"
+            app:destination="@id/updateWordFragment" />
     </fragment>
     <fragment
         android:id="@+id/addWordFragment"
@@ -35,4 +38,14 @@
             android:id="@+id/action_addWordFragment_to_settingsFragment"
             app:destination="@id/settingsFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/updateWordFragment"
+        android:name="com.example.dailydictionaryforme.UpdateWordFragment"
+        android:label="fragment_update_word"
+        tools:layout="@layout/fragment_update_word" />
+    <fragment
+        android:id="@+id/aboutWordsFragment2"
+        android:name="com.example.dailydictionaryforme.AboutWordsFragment"
+        android:label="fragment_about_words"
+        tools:layout="@layout/fragment_about_words" />
 </navigation>

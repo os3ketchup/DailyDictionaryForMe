@@ -5,55 +5,64 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
+import com.example.dailydictionaryforme.adapter.ViewPagerAdapter
+import com.example.dailydictionaryforme.data.Category
+import com.example.dailydictionaryforme.data.Word
+import com.example.dailydictionaryforme.database.MyDatabase
+import com.example.dailydictionaryforme.databinding.FragmentBasicBinding
+import com.google.android.material.tabs.TabLayoutMediator
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.schedulers.Schedulers
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [BasicFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class BasicFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    lateinit var binding: FragmentBasicBinding
+    lateinit var adapter: ViewPagerAdapter
+    lateinit var database: MyDatabase
+    lateinit var list: List<Category>
+    private lateinit var navHostFragment: NavHostFragment
+    private lateinit var navController: NavController
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_basic, container, false)
+    ): View {
+        binding = FragmentBasicBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment BasicFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            BasicFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        navHostFragment =
+            requireActivity().supportFragmentManager.findFragmentById(R.id.container) as NavHostFragment
+        navController = navHostFragment.navController
+
+
+        database = MyDatabase.getInstance(requireActivity())
+        database.categoryDao().getAllCategories().subscribeOn(Schedulers.io())
+
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe {
+
+
+                adapter = ViewPagerAdapter(requireContext(), it,navController)
+                binding.rvBasic.adapter = adapter
+                TabLayoutMediator(
+                    binding.tabLayoutBasic, binding.rvBasic, true
+                ) { tab, position ->
+                    tab.text = it[position].name_category
+
+                }.attach()
+
             }
+
+
     }
+
+
 }

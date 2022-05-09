@@ -1,10 +1,15 @@
 package com.example.dailydictionaryforme
 
+import android.app.Activity
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.*
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.onNavDestinationSelected
 import com.example.dailydictionaryforme.adapter.CategoryAdapter
@@ -24,10 +29,13 @@ import java.lang.IllegalStateException
 
 
 class WordFragment : Fragment() {
+    private lateinit var navHostFragment: NavHostFragment
+    private lateinit var navController: NavController
+    lateinit var imageUri: Uri
     private val TAG = "WordFragment"
     lateinit var database: MyDatabase
     lateinit var wordAdapter: WordAdapter
-    lateinit var list:ArrayList<Word>
+    lateinit var list: ArrayList<Word>
     private var _binding: FragmentWordBinding? = null
     private val binding get() = _binding!!
 
@@ -37,39 +45,24 @@ class WordFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentWordBinding.inflate(layoutInflater)
-      /*  update()*/
+        /*  update()*/
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         SettingsFragment.addButton = "Words"
+        navHostFragment =
+            requireActivity().supportFragmentManager.findFragmentById(R.id.container) as NavHostFragment
+        navController = navHostFragment.navController
 
 
-            onError()
-            update()
+
+
+        update()
 
     }
 
-    private fun onError() {
-       var handy =   object : Observer<List<Word>> {
-           override fun onSubscribe(d: Disposable) {
-
-           }
-
-           override fun onNext(t: List<Word>) {
-
-           }
-
-           override fun onError(e: Throwable) {
-               Log.d(TAG, "onError: ${e.localizedMessage}")
-           }
-
-           override fun onComplete() {
-
-           }
-       }
-    }
 
     private fun update() {
         /*list = ArrayList()
@@ -82,32 +75,14 @@ class WordFragment : Fragment() {
             database.wordDao().getAllWords().subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe {
-
-                    wordAdapter = WordAdapter(requireContext(), it,)
+                    wordAdapter = WordAdapter(requireContext(), it, navController)
                     binding.rvWords.adapter = wordAdapter
                 }
 
-
         }
-
-        /*if (database.wordDao().getAllWord().isNotEmpty()) {
-
-
-            database.wordDao().getAllWord().forEach {
-                list.add(it)
-            }
-            wordAdapter = WordAdapter(requireContext(),list)
-            Toast.makeText(requireContext(), "$isEdit", Toast.LENGTH_SHORT).show()
-
-
-            binding.rvWords.adapter = wordAdapter
-        }*/
-
 
 
     }
-
-
 
 
     override fun onPause() {
@@ -123,6 +98,12 @@ class WordFragment : Fragment() {
     }
 
 
-
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == 1 && requestCode == Activity.RESULT_OK) {
+            val uri = data?.data ?: return
+            imageUri = uri
+        }
+    }
 
 }

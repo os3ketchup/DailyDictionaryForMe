@@ -30,6 +30,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         supportActionBar?.hide()
 
+
+
+
         RxJavaPlugins.setErrorHandler(Timber::e)
 
     }

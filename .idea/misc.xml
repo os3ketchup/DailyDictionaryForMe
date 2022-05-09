@@ -9,6 +9,7 @@
         <entry key="..\:/MyAndroidProjects/DailyDictionaryForMe/app/src/main/res/drawable/ic_add.xml" value="0.1185" />
         <entry key="..\:/MyAndroidProjects/DailyDictionaryForMe/app/src/main/res/drawable/ic_back.xml" value="0.1185" />
         <entry key="..\:/MyAndroidProjects/DailyDictionaryForMe/app/src/main/res/drawable/ic_category.xml" value="0.1185" />
+        <entry key="..\:/MyAndroidProjects/DailyDictionaryForMe/app/src/main/res/drawable/ic_check.xml" value="0.1" />
         <entry key="..\:/MyAndroidProjects/DailyDictionaryForMe/app/src/main/res/drawable/ic_delete.xml" value="0.1185" />
         <entry key="..\:/MyAndroidProjects/DailyDictionaryForMe/app/src/main/res/drawable/ic_favorite.xml" value="0.1185" />
         <entry key="..\:/MyAndroidProjects/DailyDictionaryForMe/app/src/main/res/drawable/ic_home.xml" value="0.1185" />
@@ -23,16 +24,20 @@
         <entry key="..\:/MyAndroidProjects/DailyDictionaryForMe/app/src/main/res/layout/activity_main.xml" value="0.21979166666666666" />
         <entry key="..\:/MyAndroidProjects/DailyDictionaryForMe/app/src/main/res/layout/dialog_category.xml" value="0.22826086956521738" />
         <entry key="..\:/MyAndroidProjects/DailyDictionaryForMe/app/src/main/res/layout/dropdown_item.xml" value="0.23802083333333332" />
-        <entry key="..\:/MyAndroidProjects/DailyDictionaryForMe/app/src/main/res/layout/fragment_add_word.xml" value="0.264" />
+        <entry key="..\:/MyAndroidProjects/DailyDictionaryForMe/app/src/main/res/layout/fragment_about_words.xml" value="0.23802083333333332" />
+        <entry key="..\:/MyAndroidProjects/DailyDictionaryForMe/app/src/main/res/layout/fragment_add_word.xml" value="0.176" />
         <entry key="..\:/MyAndroidProjects/DailyDictionaryForMe/app/src/main/res/layout/fragment_basic.xml" value="0.264" />
         <entry key="..\:/MyAndroidProjects/DailyDictionaryForMe/app/src/main/res/layout/fragment_category.xml" value="0.22327898550724637" />
         <entry key="..\:/MyAndroidProjects/DailyDictionaryForMe/app/src/main/res/layout/fragment_favorite.xml" value="0.22327898550724637" />
         <entry key="..\:/MyAndroidProjects/DailyDictionaryForMe/app/src/main/res/layout/fragment_host.xml" value="0.22327898550724637" />
         <entry key="..\:/MyAndroidProjects/DailyDictionaryForMe/app/src/main/res/layout/fragment_settings.xml" value="0.22327898550724637" />
+        <entry key="..\:/MyAndroidProjects/DailyDictionaryForMe/app/src/main/res/layout/fragment_update_word.xml" value="0.23802083333333332" />
         <entry key="..\:/MyAndroidProjects/DailyDictionaryForMe/app/src/main/res/layout/fragment_word.xml" value="0.22327898550724637" />
-        <entry key="..\:/MyAndroidProjects/DailyDictionaryForMe/app/src/main/res/layout/item_rv.xml" value="0.23802083333333332" />
+        <entry key="..\:/MyAndroidProjects/DailyDictionaryForMe/app/src/main/res/layout/fragment_words.xml" value="0.22395833333333334" />
+        <entry key="..\:/MyAndroidProjects/DailyDictionaryForMe/app/src/main/res/layout/item_rv.xml" value="0.152" />
         <entry key="..\:/MyAndroidProjects/DailyDictionaryForMe/app/src/main/res/layout/item_rv_category.xml" value="0.264" />
-        <entry key="..\:/MyAndroidProjects/DailyDictionaryForMe/app/src/main/res/layout/item_rv_words.xml" value="0.23802083333333332" />
+        <entry key="..\:/MyAndroidProjects/DailyDictionaryForMe/app/src/main/res/layout/item_rv_viewpager.xml" value="0.23802083333333332" />
+        <entry key="..\:/MyAndroidProjects/DailyDictionaryForMe/app/src/main/res/layout/item_rv_words.xml" value="0.176" />
         <entry key="..\:/MyAndroidProjects/DailyDictionaryForMe/app/src/main/res/menu/item_bottom.xml" value="0.6" />
         <entry key="..\:/MyAndroidProjects/DailyDictionaryForMe/app/src/main/res/menu/item_bottom_settings.xml" value="0.23385416666666667" />
         <entry key="..\:/MyAndroidProjects/DailyDictionaryForMe/app/src/main/res/menu/item_popup.xml" value="0.23802083333333332" />

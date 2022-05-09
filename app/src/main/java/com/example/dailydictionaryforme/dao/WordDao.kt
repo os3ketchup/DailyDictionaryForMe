@@ -6,6 +6,7 @@ import com.example.dailydictionaryforme.data.CategoryData
 import com.example.dailydictionaryforme.data.Word
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.core.Single
+import kotlinx.coroutines.selects.select
 
 @Dao
 interface WordDao {
@@ -17,6 +18,10 @@ interface WordDao {
 
     @Query("select * from word")
     fun getWord(): Word
+
+    @Query("select * from word where category_id= :category_id")
+    fun getWordById(category_id: Int):List<Word>
+
     @Update
     fun updateWord(word: Word)
 

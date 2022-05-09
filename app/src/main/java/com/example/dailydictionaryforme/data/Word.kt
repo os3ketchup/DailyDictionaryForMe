@@ -9,10 +9,12 @@ import androidx.room.PrimaryKey
     foreignKeys = [ForeignKey(entity = Category::class, parentColumns = ["category_id"], childColumns = ["category_id"], onDelete = ForeignKey.CASCADE, onUpdate = ForeignKey.CASCADE)]
 )
 data class Word(
+
     var category_id:Int?=null,
     @PrimaryKey(autoGenerate = true)
+
     var word_id:Int?=null,
     var name_word:String?=null,
     var description:String?=null,
-    var image:Int?=null
+    var image:String?=null
 )

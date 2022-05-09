@@ -59,23 +59,6 @@ class CategoryFragment : Fragment() {
                 binding.rvCategory.adapter = categoryAdapter
             }
 
-
-
-
-
-
-
-
-
-
-    /*    categoryAdapter = CategoryAdapter(list,object :CategoryAdapter.RvClick{
-            override fun itemClick(category: Category) {
-
-            }
-        })*/
-
-
-
     }
 
     override fun onPause() {

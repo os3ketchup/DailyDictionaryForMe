@@ -35,7 +35,7 @@ class SettingsFragment : Fragment() {
 
     companion object {
         var addButton: String = "navigation"
-
+        var navigator = false
     }
 
 
@@ -56,6 +56,8 @@ class SettingsFragment : Fragment() {
         binding.toolbarSettings.setNavigationOnClickListener {
             findNavController().popBackStack()
         }
+
+
 
         binding.ivAdd.setOnClickListener {
             when (addButton) {

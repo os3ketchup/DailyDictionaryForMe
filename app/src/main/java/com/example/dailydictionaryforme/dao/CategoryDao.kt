@@ -4,8 +4,10 @@ import androidx.room.*
 import com.example.dailydictionaryforme.data.Category
 import com.example.dailydictionaryforme.data.CategoryData
 import com.example.dailydictionaryforme.data.Word
+import io.reactivex.rxjava3.core.Flowable
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.core.Single
+import kotlinx.coroutines.joinAll
 
 @Dao
 interface CategoryDao {
@@ -13,11 +15,19 @@ interface CategoryDao {
     @Query("select * from category")
     fun getCategoryByWord(): List<CategoryData>
 
+    @Query("select * from Category"  )
+    fun getCategoryByWords():Observable<List<CategoryData>>
+
+
+
     @Query("select * from category")
-    fun getAllCategories(): Observable<List<Category>>
+    fun getAllCategories(): Flowable<List<Category>>
 
     @Query("select * from category")
     fun getAllCategory(): List<Category>
+
+
+
 
     @Insert
     fun addCategory(category: Category): Single<Long>
