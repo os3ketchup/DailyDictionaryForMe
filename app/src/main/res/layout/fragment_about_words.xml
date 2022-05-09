@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".AboutWordsFragment">
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar_add_word"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:navigationIcon="@drawable/ic_back"
+        app:title="Add word">
+
+        <ImageView
+            android:id="@+id/iv_accept"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_favorite"
+            android:layout_gravity="end"
+            android:layout_margin="16dp"/>
+    </com.google.android.material.appbar.MaterialToolbar>
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="150dp">
+        <ImageView
+            android:id="@+id/iv_gallerys"
+            android:scaleType="centerCrop"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_margin="16dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/ic_photo_alternative"/>
+        <LinearLayout
+            android:layout_marginEnd="16dp"
+            android:layout_weight="1.5"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/et_layout"
+                android:text="@string/app_name"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </TextView>
+            <TextView
+                android:hint="Enter word"
+                android:text="@string/app_name"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </TextView>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_margin="16dp"
+        android:text="@string/app_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </TextView>
+</LinearLayout>
