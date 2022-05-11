@@ -8,11 +8,11 @@ import android.widget.Button
 import android.widget.PopupMenu
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-
+import com.example.dailydictionaryforme.MyWords.word
 import com.example.dailydictionaryforme.R
 import com.example.dailydictionaryforme.data.Category
 import com.example.dailydictionaryforme.database.MyDatabase
-
+import com.example.dailydictionaryforme.databinding.ItemRvBinding
 import com.example.dailydictionaryforme.databinding.ItemRvCategoryBinding
 import com.example.dailydictionaryforme.incrementer
 

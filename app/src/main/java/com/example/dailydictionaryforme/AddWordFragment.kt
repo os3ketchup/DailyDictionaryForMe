@@ -30,7 +30,7 @@ import kotlin.collections.HashMap
 
 
 class AddWordFragment : Fragment() {
-     private var pathImage:String = ""
+    private var pathImage: String = ""
     lateinit var category: Category
     lateinit var word: Word
     lateinit var database: MyDatabase
@@ -66,7 +66,7 @@ class AddWordFragment : Fragment() {
                 Intent(Intent.ACTION_OPEN_DOCUMENT).apply {
                     addCategory(Intent.CATEGORY_OPENABLE)
                     type = "image/*"
-                },2
+                }, 2
             )
 
 
@@ -76,7 +76,7 @@ class AddWordFragment : Fragment() {
         val cList = database.categoryDao().getAllCategory()
         val kList = ArrayList<String>()
         val iList = ArrayList<Int>()
-        val mapI = HashMap<String,Int>()
+        val mapI = HashMap<String, Int>()
         val categoryName = ArrayList<Category>()
 
         categoryName.addAll(cList)
@@ -90,38 +90,45 @@ class AddWordFragment : Fragment() {
 
         val adapter = ArrayAdapter(requireContext(), R.layout.dropdown_item, kList)
         binding.autoComplete.setAdapter(adapter)
-
-        (binding.etLayout.editText as MaterialAutoCompleteTextView).setText(
-            adapter.getItem(0),
-            false
-        )
+        if (database.categoryDao().getAllCategory().isNotEmpty()) {
+            (binding.etLayout.editText as MaterialAutoCompleteTextView).setText(
+                adapter.getItem(0),
+                false
+            )
+        }
 
         binding.ivAccept.setOnClickListener {
-            if (binding.etWord.text.toString().isNotEmpty()&&binding.etDescription.text.toString().isNotEmpty()){
+            if (binding.etWord.text.toString().isNotEmpty() && binding.etDescription.text.toString()
+                    .isNotEmpty() && database.categoryDao().getAllCategory().isNotEmpty()
+            ) {
 
-                val wordName =   binding.etWord.text.toString()
+                val wordName = binding.etWord.text.toString()
                 val wordDesc = binding.etDescription.text.toString()
                 val wordId = mapI[binding.autoComplete.text.toString()]
                 val imageWord = pathImage
 
 
-                word = Word(category_id = wordId, name_word = wordName, description = wordDesc, image = imageWord)
+                word = Word(
+                    category_id = wordId,
+                    name_word = wordName,
+                    description = wordDesc,
+                    image = imageWord
+                )
                 /*database.wordDao().addWord(word)*/
 
                 database.wordDao().addWord(word)
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe{
-                            t->
+                    .subscribe { t ->
                     }
                 binding.etWord.text?.clear()
                 binding.etDescription.text?.clear()
                 Toast.makeText(requireContext(), "Successfully added", Toast.LENGTH_SHORT).show()
-            }else{
+            } else {
                 Toast.makeText(requireContext(), "Please fill the gaps", Toast.LENGTH_SHORT).show()
             }
 
-            }
+        }
 
 
     }
@@ -133,14 +140,14 @@ class AddWordFragment : Fragment() {
 
     @SuppressLint("SimpleDateFormat")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-            super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode==2&&resultCode==Activity.RESULT_OK){
-            val uri = data?.data?:return
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == 2 && resultCode == Activity.RESULT_OK) {
+            val uri = data?.data ?: return
             binding.ivGallerys.setImageURI(uri)
             val inputStream = requireContext().contentResolver?.openInputStream(uri)
             val simpleDate = SimpleDateFormat("hh:mm:ss")
             val currentDate = simpleDate.format(Date())
-            val file = File(requireContext().filesDir,"$currentDate.jpg")
+            val file = File(requireContext().filesDir, "$currentDate.jpg")
             val outputStream = FileOutputStream(file)
             inputStream?.copyTo(outputStream)
             inputStream?.close()

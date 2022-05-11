@@ -80,7 +80,7 @@ class SettingsFragment : Fragment() {
                             .subscribe{
                                 t->
                             }
-                        Toast.makeText(requireContext(), categoryName, Toast.LENGTH_SHORT).show()
+                        Toast.makeText(requireContext(), "Saved", Toast.LENGTH_SHORT).show()
                         dialog.cancel()
                     }
 
