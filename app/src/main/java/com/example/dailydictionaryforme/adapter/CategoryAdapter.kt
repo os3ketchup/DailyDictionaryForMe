@@ -8,17 +8,17 @@ import android.widget.Button
 import android.widget.PopupMenu
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.example.dailydictionaryforme.MyWords.word
+
 import com.example.dailydictionaryforme.R
 import com.example.dailydictionaryforme.data.Category
 import com.example.dailydictionaryforme.database.MyDatabase
-import com.example.dailydictionaryforme.databinding.ItemRvBinding
+
 import com.example.dailydictionaryforme.databinding.ItemRvCategoryBinding
 import com.example.dailydictionaryforme.incrementer
 
 import com.google.android.material.textfield.TextInputEditText
 
-var t = 0
+
 
 class CategoryAdapter(var context: Context, var list: List<Category>) :
     RecyclerView.Adapter<CategoryAdapter.VH>() {
@@ -102,7 +102,7 @@ class CategoryAdapter(var context: Context, var list: List<Category>) :
 
     override fun onBindViewHolder(holder: VH, position: Int) {
         holder.onBind(list[position])
-        t = position
+
     }
 
     override fun getItemCount(): Int {

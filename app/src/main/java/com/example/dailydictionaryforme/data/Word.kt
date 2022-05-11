@@ -16,5 +16,6 @@ data class Word(
     var word_id:Int?=null,
     var name_word:String?=null,
     var description:String?=null,
-    var image:String?=null
+    var image:String?=null,
+    var favorite:Int? = 0
 )

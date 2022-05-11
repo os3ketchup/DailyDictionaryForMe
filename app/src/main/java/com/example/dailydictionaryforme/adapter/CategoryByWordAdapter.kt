@@ -4,11 +4,13 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dailydictionaryforme.R
 import com.example.dailydictionaryforme.data.Category
 import com.example.dailydictionaryforme.data.Word
+import com.example.dailydictionaryforme.data.WordSerial
 import com.example.dailydictionaryforme.database.MyDatabase
 import com.example.dailydictionaryforme.databinding.ItemRvBinding
 import com.example.dailydictionaryforme.databinding.ItemRvViewpagerBinding
@@ -29,7 +31,14 @@ class CategoryByWordAdapter(var context: Context, var list: List<Word>,var navCo
                 itemRV.tvItemName.text = word.name_word
             }
                 itemRV.root.setOnClickListener {
-                    navController.navigate(R.id.aboutWordsFragment2)
+                val wordSerial = WordSerial()
+                    wordSerial.categoryId = word.category_id
+                    wordSerial.wordId = word.word_id
+                    wordSerial.title = word.name_word
+                    wordSerial.description = word.description
+                    wordSerial.image = word.image
+                    wordSerial.likes = word.favorite!!
+                    navController.navigate(R.id.aboutWordsFragment2, bundleOf("info" to wordSerial))
                 }
 
         }

@@ -113,12 +113,11 @@ class SettingsFragment : Fragment() {
         return when (item.itemId) {
             R.id.categoryFragment -> {
                 addButton = "Categories"
-                Toast.makeText(this.requireContext(), addButton, Toast.LENGTH_SHORT).show()
                 return true
             }
             R.id.wordFragment -> {
                 addButton = "Words"
-                Toast.makeText(this.requireContext(), addButton, Toast.LENGTH_SHORT).show()
+
                 return true
             }
             else -> false

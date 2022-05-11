@@ -64,15 +64,7 @@ class CategoryFragment : Fragment() {
     override fun onPause() {
         super.onPause()
         SettingsFragment.addButton = "Words"
-        Toast.makeText(requireContext(), "onPause clicked", Toast.LENGTH_SHORT).show()
     }
-
-    override fun onStop() {
-        super.onStop()
-        Toast.makeText(requireContext(), "ONSTOP clicked", Toast.LENGTH_SHORT).show()
-    }
-
-
 
     override fun onDestroyView() {
         super.onDestroyView()
@@ -80,9 +72,6 @@ class CategoryFragment : Fragment() {
         _binding = null
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
 
-    }
 
 }
