@@ -50,14 +50,18 @@ class CategoryAdapter(var context: Context, var list: List<Category>) :
                                     database.categoryDao().editCategory(category)
                                     Toast.makeText(
                                         context,
-                                        category.name_category,
+                                        "Category is edited",
                                         Toast.LENGTH_SHORT
                                     ).show()
+
                                     dialog.cancel()
                                 }
-
-
+                            customDialog.findViewById<TextInputEditText>(R.id.et_dialog).setText(category.name_category)
                             dialog.setView(customDialog)
+
+                            customDialog.findViewById<Button>(R.id.button_cancel).setOnClickListener {
+                                dialog.cancel()
+                            }
                             dialog.show()
 
                             true

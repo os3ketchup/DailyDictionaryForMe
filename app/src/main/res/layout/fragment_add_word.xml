@@ -10,6 +10,7 @@
         android:id="@+id/toolbar_add_word"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:elevation="0.5dp"
         app:navigationIcon="@drawable/ic_back"
         app:title="Add word">
 

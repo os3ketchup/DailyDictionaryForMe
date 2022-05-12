@@ -40,12 +40,12 @@ class AboutWordsFragment : Fragment() {
 
         database = MyDatabase.getInstance(requireContext())
         val wordSerial = arguments?.getSerializable("info") as WordSerial
-        binding.tvWord.text = "word: ${wordSerial.title}"
-        binding.tvDescription.text = "description: ${wordSerial.description}"
+        binding.tvWord.text = "Word: ${wordSerial.title}"
+        binding.tvDescription.text = "Description: ${wordSerial.description}"
         val bitMap = BitmapFactory.decodeFile(wordSerial.image)
         database.categoryDao().getAllCategory().forEach {
             if (it.category_id == wordSerial.categoryId) {
-                binding.tvCategory.text = "Categories: ${it.name_category}"
+                binding.tvCategory.text = "Category: ${it.name_category}"
                 binding.toolbarAddWord.title = it.name_category
 
             }

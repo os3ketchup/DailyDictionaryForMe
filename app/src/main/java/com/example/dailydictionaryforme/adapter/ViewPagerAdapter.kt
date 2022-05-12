@@ -6,14 +6,8 @@ import android.view.ViewGroup
 import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dailydictionaryforme.data.Category
-import com.example.dailydictionaryforme.data.CategoryData
-import com.example.dailydictionaryforme.data.Word
 import com.example.dailydictionaryforme.database.MyDatabase
-import com.example.dailydictionaryforme.databinding.FragmentWordBinding
-import com.example.dailydictionaryforme.databinding.FragmentWordsBinding
-import com.example.dailydictionaryforme.databinding.ItemRvBinding
 import com.example.dailydictionaryforme.databinding.ItemRvViewpagerBinding
-import kotlinx.android.synthetic.main.fragment_word.view.*
 
 class ViewPagerAdapter(var context: Context, private val mList:List<Category>,var navController: NavController): RecyclerView.Adapter<ViewPagerAdapter.VH>() {
 

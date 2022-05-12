@@ -22,7 +22,7 @@ var incrementer = 0
 private const val TAG = "MainActivity"
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
-    /*lateinit var db:MyDatabase*/
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 

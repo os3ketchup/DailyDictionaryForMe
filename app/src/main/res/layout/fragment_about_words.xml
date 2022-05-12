@@ -5,11 +5,11 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:layout_margin="16dp"
     tools:context=".AboutWordsFragment">
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar_add_word"
         android:layout_width="match_parent"
+        android:elevation="0.5dp"
         android:layout_height="wrap_content"
         app:navigationIcon="@drawable/ic_back"
         app:title="Info">
@@ -18,6 +18,7 @@
             android:id="@+id/iv_like"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+
             android:src="@drawable/ic_favorite"
             android:layout_gravity="end"
             android:layout_margin="16dp"/>
@@ -31,11 +32,11 @@
         <ImageView
             android:id="@+id/iv_gallery"
             android:scaleType="centerCrop"
+            android:layout_margin="16dp"
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_margin="16dp"
-            android:background="@drawable/ic_photo_alternative"/>
+            android:background="@drawable/ic_photo_24"/>
         <LinearLayout
             android:layout_marginEnd="16dp"
             android:layout_weight="1.5"
@@ -46,7 +47,10 @@
             <TextView
                 android:id="@+id/tv_category"
                 android:layout_weight="1"
-                android:text="Categories:"
+                android:text="@string/category"
+                android:layout_marginTop="16dp"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:background="@drawable/border_background"
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp"
                 android:gravity="center_vertical"
@@ -59,8 +63,12 @@
             <TextView
                 android:id="@+id/tv_word"
                 android:text="Word:"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:background="@drawable/border_background"
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
                 android:gravity="center_vertical"
                 android:layout_weight="1"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -75,12 +83,16 @@
     <TextView
         android:id="@+id/tv_description"
         android:layout_margin="16dp"
+        android:layout_weight="1"
         android:text="Description:"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:background="@drawable/border_background"
+        android:paddingTop="8dp"
         android:paddingStart="16dp"
         android:paddingEnd="16dp"
         android:textColor="@color/black"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="0dp">
 
     </TextView>
 </LinearLayout>

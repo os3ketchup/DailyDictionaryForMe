@@ -8,8 +8,11 @@
     tools:context=".BasicFragment">
 <com.google.android.material.tabs.TabLayout
     android:id="@+id/tabLayout_basic"
-    app:tabTextColor="@color/purple_700"
+    app:tabTextColor="@color/white"
     app:tabMode="auto"
+    android:elevation="2dp"
+    android:backgroundTint="#FFC107"
+    app:tabIndicatorColor="@color/white"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"/>
 

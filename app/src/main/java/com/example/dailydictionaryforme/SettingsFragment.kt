@@ -65,22 +65,34 @@ class SettingsFragment : Fragment() {
                     val dialog = AlertDialog.Builder(binding.root.context).create()
                     val customDialog = LayoutInflater.from(binding.root.context)
                         .inflate(R.layout.dialog_category, null, false)
+                    val name = customDialog.findViewById<EditText>(R.id.et_dialog)
 
-                    customDialog.findViewById<Button>(R.id.button_category).setOnClickListener {
-                        val name = customDialog.findViewById<EditText>(R.id.et_dialog)
+                        customDialog.findViewById<Button>(R.id.button_category).setOnClickListener {
 
-                        val    categoryName = name.text.toString()
-                        category = Category(name_category = categoryName)
-                        myDatabase = MyDatabase.getInstance(requireContext())
+                            val    categoryName = name.text.toString()
+                            category = Category(name_category = categoryName)
+                            myDatabase = MyDatabase.getInstance(requireContext())
 
-
-                        myDatabase.categoryDao().addCategory(category)
-                            .subscribeOn(Schedulers.io())
-                            .observeOn(AndroidSchedulers.mainThread())
-                            .subscribe{
-                                t->
+                            if (name.text.isNotEmpty()){
+                                myDatabase.categoryDao().addCategory(category)
+                                    .subscribeOn(Schedulers.io())
+                                    .observeOn(AndroidSchedulers.mainThread())
+                                    .subscribe{
+                                            t->
+                                    }
+                                Toast.makeText(requireContext(), "Saved", Toast.LENGTH_SHORT).show()
+                                dialog.cancel()
+                            }else{
+                                Toast.makeText(requireContext(), "Please fill the gaps", Toast.LENGTH_SHORT).show()
                             }
-                        Toast.makeText(requireContext(), "Saved", Toast.LENGTH_SHORT).show()
+
+                        }
+
+
+
+
+
+                    customDialog.findViewById<Button>(R.id.button_cancel).setOnClickListener {
                         dialog.cancel()
                     }
 
