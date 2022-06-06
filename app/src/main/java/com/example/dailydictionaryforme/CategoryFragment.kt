@@ -24,16 +24,12 @@ class CategoryFragment : Fragment() {
     private var _binding: FragmentCategoryBinding? = null
     private val binding get() = _binding!!
 
-
-
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentCategoryBinding.inflate(layoutInflater)
-
         return binding.root
     }
 
@@ -41,37 +37,26 @@ class CategoryFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         SettingsFragment.addButton = "Categories"
         setLayout()
-
-
-
-
     }
 
 
     private fun setLayout() {
         list = ArrayList()
         database = MyDatabase.getInstance(requireActivity())
-
         database.categoryDao().getAllCategories().subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe {
                 categoryAdapter = CategoryAdapter(requireContext(),it,)
                 binding.rvCategory.adapter = categoryAdapter
             }
-
     }
 
     override fun onPause() {
         super.onPause()
         SettingsFragment.addButton = "Words"
     }
-
     override fun onDestroyView() {
         super.onDestroyView()
-
         _binding = null
     }
-
-
-
 }

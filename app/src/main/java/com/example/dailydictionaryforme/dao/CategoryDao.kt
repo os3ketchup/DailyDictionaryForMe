@@ -18,16 +18,11 @@ interface CategoryDao {
     @Query("select * from Category"  )
     fun getCategoryByWords():Observable<List<CategoryData>>
 
-
-
     @Query("select * from category")
     fun getAllCategories(): Flowable<List<Category>>
 
     @Query("select * from category")
     fun getAllCategory(): List<Category>
-
-
-
 
     @Insert
     fun addCategory(category: Category): Single<Long>
@@ -43,6 +38,5 @@ interface CategoryDao {
 
     @Update
     fun editCategory(category: Category)
-
 
 }

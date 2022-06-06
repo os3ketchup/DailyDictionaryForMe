@@ -3,7 +3,6 @@ package com.example.dailydictionaryforme
 import android.app.Activity
 import android.content.Intent
 import android.graphics.BitmapFactory
-import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -17,19 +16,15 @@ import com.example.dailydictionaryforme.data.WordSerial
 import com.example.dailydictionaryforme.database.MyDatabase
 import com.example.dailydictionaryforme.databinding.FragmentUpdateWordBinding
 import com.google.android.material.textfield.MaterialAutoCompleteTextView
-import kotlinx.android.synthetic.main.fragment_update_word.*
 import java.io.File
 import java.io.FileOutputStream
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.collections.ArrayList
-import kotlin.collections.HashMap
-import kotlin.collections.forEach
 import kotlin.collections.set
 
 
 class UpdateWordFragment : Fragment() {
-     private var pathImage: String = ""
+    private var pathImage: String = ""
     private var image = ""
     lateinit var binding: FragmentUpdateWordBinding
     lateinit var database: MyDatabase
@@ -77,19 +72,13 @@ class UpdateWordFragment : Fragment() {
             binding.ivUpdateGallery.setImageBitmap(bitClearMap)
             pathImage = ""
         }
-
-
-
-
         binding.ivAcceptUpdate.setOnClickListener {
-            if (binding.etWordUpdate.text.toString().isNotEmpty()&&binding.etDescriptionUpdate.text.toString().isNotEmpty()){
-
+            if (binding.etWordUpdate.text.toString()
+                    .isNotEmpty() && binding.etDescriptionUpdate.text.toString().isNotEmpty()
+            ) {
                 val title = binding.etWordUpdate.text.toString()
                 val desc = binding.etDescriptionUpdate.text.toString()
-
-                 image = pathImage
-
-
+                image = pathImage
                 val wordId = mapI[binding.autoCompleteUpdate.text.toString()]
                 val word = Word(
                     word_id = wordSerial.wordId,
@@ -103,14 +92,10 @@ class UpdateWordFragment : Fragment() {
                 binding.etDescriptionUpdate.text?.clear()
                 Toast.makeText(requireContext(), "Successfully edited", Toast.LENGTH_SHORT).show()
                 findNavController().popBackStack()
-            }else{
+            } else {
                 Toast.makeText(requireContext(), "Please fill the gaps", Toast.LENGTH_SHORT).show()
             }
-
-
         }
-
-
         binding.ivUpdateGallery.setOnClickListener {
             startActivityForResult(
                 Intent(Intent.ACTION_OPEN_DOCUMENT).apply {
@@ -118,8 +103,6 @@ class UpdateWordFragment : Fragment() {
                     type = "image/*"
                 }, 3
             )
-
-
         }
     }
 
@@ -137,12 +120,7 @@ class UpdateWordFragment : Fragment() {
             inputStream?.copyTo(outputStream)
             inputStream?.close()
             outputStream.close()
-
             pathImage = file.absolutePath
-
-
         }
     }
-
-
 }

@@ -26,7 +26,6 @@ class AboutWordsFragment : Fragment() {
     ): View {
         // Inflate the layout for this fragment
         binding = FragmentAboutWordsBinding.inflate(inflater,container,false)
-
         return binding.root
     }
 
@@ -35,9 +34,7 @@ class AboutWordsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.toolbarAddWord.setNavigationOnClickListener {
             findNavController().popBackStack()
-
         }
-
         database = MyDatabase.getInstance(requireContext())
         val wordSerial = arguments?.getSerializable("info") as WordSerial
         binding.tvWord.text = "Word: ${wordSerial.title}"
@@ -47,20 +44,14 @@ class AboutWordsFragment : Fragment() {
             if (it.category_id == wordSerial.categoryId) {
                 binding.tvCategory.text = "Category: ${it.name_category}"
                 binding.toolbarAddWord.title = it.name_category
-
             }
         }
-
-
-
         binding.ivGallery.setImageBitmap(bitMap)
         if (wordSerial.likes==1){
             binding.ivLike.setImageResource(R.drawable.ic_likes)
-
         }else{
             binding.ivLike.setImageResource(R.drawable.ic_favorite)
         }
-
         binding.ivLike.setOnClickListener {
             val wordName =   wordSerial.title
             val categoryId = wordSerial.categoryId
@@ -68,22 +59,16 @@ class AboutWordsFragment : Fragment() {
             val wordId = wordSerial.wordId
             val imageWord = wordSerial.image
             word = Word(word_id = wordId, category_id = categoryId, name_word = wordName, description = wordDesc, image = imageWord, favorite = wordSerial.likes)
-
             if (word.favorite==0){
                 binding.ivLike.setImageResource(R.drawable.ic_likes)
                 wordSerial.likes = 1
-
-
             }else{
                 binding.ivLike.setImageResource(R.drawable.ic_favorite)
                 wordSerial.likes = 0
-
             }
             val favorite = wordSerial.likes
             word = Word(word_id = wordId, category_id = categoryId, name_word = wordName, description = wordDesc, image = imageWord, favorite = favorite)
             database.wordDao().updateWord(word)
         }
     }
-
-
 }

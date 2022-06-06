@@ -9,6 +9,7 @@
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar_add_word"
         android:layout_width="match_parent"
+
         android:elevation="0.5dp"
         android:layout_height="wrap_content"
         app:navigationIcon="@drawable/ic_back"
@@ -18,7 +19,6 @@
             android:id="@+id/iv_like"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
             android:src="@drawable/ic_favorite"
             android:layout_gravity="end"
             android:layout_margin="16dp"/>

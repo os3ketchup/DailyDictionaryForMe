@@ -45,22 +45,17 @@ class AddWordFragment : Fragment() {
         _binding = FragmentAddWordBinding.inflate(layoutInflater)
         return binding.root
     }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         database = MyDatabase.getInstance(requireContext())
         binding.toolbarAddWord.setNavigationOnClickListener {
             findNavController().popBackStack()
-
         }
         val bitClearMap = BitmapFactory.decodeFile("")
         binding.ivClear.setOnClickListener {
             binding.ivGallerys.setImageBitmap(bitClearMap)
             pathImage = ""
         }
-
-
-
         binding.ivGallerys.setOnClickListener {
             startActivityForResult(
                 Intent(Intent.ACTION_OPEN_DOCUMENT).apply {
@@ -68,22 +63,16 @@ class AddWordFragment : Fragment() {
                     type = "image/*"
                 }, 2
             )
-
-
         }
-
-
         val cList = database.categoryDao().getAllCategory()
         val kList = ArrayList<String>()
         val iList = ArrayList<Int>()
         val mapI = HashMap<String, Int>()
         val categoryName = ArrayList<Category>()
-
         categoryName.addAll(cList)
         categoryName.forEach {
             kList.add(it.name_category!!)
             iList.add(it.category_id!!)
-
             mapI[it.name_category!!] = it.category_id
         }
 
@@ -101,21 +90,16 @@ class AddWordFragment : Fragment() {
             if (binding.etWord.text.toString().isNotEmpty() && binding.etDescription.text.toString()
                     .isNotEmpty() && database.categoryDao().getAllCategory().isNotEmpty()
             ) {
-
                 val wordName = binding.etWord.text.toString()
                 val wordDesc = binding.etDescription.text.toString()
                 val wordId = mapI[binding.autoComplete.text.toString()]
                 val imageWord = pathImage
-
-
                 word = Word(
                     category_id = wordId,
                     name_word = wordName,
                     description = wordDesc,
                     image = imageWord
                 )
-                /*database.wordDao().addWord(word)*/
-
                 database.wordDao().addWord(word)
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
@@ -127,10 +111,7 @@ class AddWordFragment : Fragment() {
             } else {
                 Toast.makeText(requireContext(), "Please fill the gaps", Toast.LENGTH_SHORT).show()
             }
-
         }
-
-
     }
 
     override fun onDestroyView() {
@@ -156,5 +137,4 @@ class AddWordFragment : Fragment() {
             Toast.makeText(requireContext(), file.absolutePath, Toast.LENGTH_SHORT).show()
         }
     }
-
 }

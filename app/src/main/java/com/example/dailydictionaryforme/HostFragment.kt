@@ -29,8 +29,17 @@ class HostFragment : Fragment() {
         val navHostFragment = childFragmentManager.findFragmentById(R.id.container_home) as NavHostFragment
         val navController = navHostFragment.navController
         binding.bottomNavHome.setupWithNavController(navController)
-        binding.ivSettings.setOnClickListener {
-            findNavController().navigate(R.id.settingsFragment)
+
+        binding.topBar.setOnMenuItemClickListener {
+            menu->
+            when(menu.itemId){
+                R.id.edit_settings->{
+                    findNavController().navigate(R.id.settingsFragment)
+                    true
+                }else->{
+                    false
+                }
+            }
         }
     }
 

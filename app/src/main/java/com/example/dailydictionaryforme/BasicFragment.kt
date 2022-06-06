@@ -26,7 +26,6 @@ class BasicFragment : Fragment() {
     private lateinit var navHostFragment: NavHostFragment
     private lateinit var navController: NavController
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -37,32 +36,21 @@ class BasicFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         navHostFragment =
             requireActivity().supportFragmentManager.findFragmentById(R.id.container) as NavHostFragment
         navController = navHostFragment.navController
-
-
         database = MyDatabase.getInstance(requireActivity())
         database.categoryDao().getAllCategories().subscribeOn(Schedulers.io())
-
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe {
-
-
                 adapter = ViewPagerAdapter(requireContext(), it,navController)
                 binding.rvBasic.adapter = adapter
                 TabLayoutMediator(
                     binding.tabLayoutBasic, binding.rvBasic, true
                 ) { tab, position ->
                     tab.text = it[position].name_category
-
                 }.attach()
-
             }
-
-
     }
-
 
 }

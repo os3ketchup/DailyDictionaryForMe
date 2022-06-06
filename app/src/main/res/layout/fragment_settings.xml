@@ -11,16 +11,10 @@
         android:id="@+id/toolbar_settings"
         app:title="Settings"
         android:elevation="0.5dp"
+        app:menu="@menu/item_appbar_add"
         app:navigationIcon="@drawable/ic_back"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize">
-        <ImageView
-            android:id="@+id/iv_add"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_add"
-            android:layout_gravity="end"
-            android:layout_margin="16dp"/>
     </com.google.android.material.appbar.MaterialToolbar>
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/container_settings"

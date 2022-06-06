@@ -3,5 +3,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="category">Category:$hello_blank_fragment</string>
+    <string name="edit">edit</string>
+    <string name="editor">Editor</string>
 
 </resources>

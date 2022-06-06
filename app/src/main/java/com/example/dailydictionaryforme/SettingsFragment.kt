@@ -25,19 +25,15 @@ import com.example.dailydictionaryforme.databinding.FragmentSettingsBinding
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
 
-
 class SettingsFragment : Fragment() {
     lateinit var myDatabase: MyDatabase
     lateinit var category: Category
     private var _binding: FragmentSettingsBinding? = null
     private val binding get() = _binding!!
 
-
     companion object {
         var addButton: String = "navigation"
-        var navigator = false
     }
-
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -51,62 +47,61 @@ class SettingsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setLayout()
-
-
         binding.toolbarSettings.setNavigationOnClickListener {
             findNavController().popBackStack()
         }
-
-
-
-        binding.ivAdd.setOnClickListener {
-            when (addButton) {
-                "Categories" -> {
-                    val dialog = AlertDialog.Builder(binding.root.context).create()
-                    val customDialog = LayoutInflater.from(binding.root.context)
-                        .inflate(R.layout.dialog_category, null, false)
-                    val name = customDialog.findViewById<EditText>(R.id.et_dialog)
-
-                        customDialog.findViewById<Button>(R.id.button_category).setOnClickListener {
-
-                            val    categoryName = name.text.toString()
-                            category = Category(name_category = categoryName)
-                            myDatabase = MyDatabase.getInstance(requireContext())
-
-                            if (name.text.isNotEmpty()){
-                                myDatabase.categoryDao().addCategory(category)
-                                    .subscribeOn(Schedulers.io())
-                                    .observeOn(AndroidSchedulers.mainThread())
-                                    .subscribe{
-                                            t->
+        binding.toolbarSettings.setOnMenuItemClickListener { menu ->
+            when (menu.itemId) {
+                R.id.add_category -> {
+                    when (addButton) {
+                        "Categories" -> {
+                            val dialog = AlertDialog.Builder(binding.root.context).create()
+                            val customDialog = LayoutInflater.from(binding.root.context)
+                                .inflate(R.layout.dialog_category, null, false)
+                            val name = customDialog.findViewById<EditText>(R.id.et_dialog)
+                            customDialog.findViewById<Button>(R.id.button_category)
+                                .setOnClickListener {
+                                    val categoryName = name.text.toString()
+                                    category = Category(name_category = categoryName)
+                                    myDatabase = MyDatabase.getInstance(requireContext())
+                                    if (name.text.isNotEmpty()) {
+                                        myDatabase.categoryDao().addCategory(category)
+                                            .subscribeOn(Schedulers.io())
+                                            .observeOn(AndroidSchedulers.mainThread())
+                                            .subscribe { t ->
+                                            }
+                                        Toast.makeText(
+                                            requireContext(),
+                                            "Saved",
+                                            Toast.LENGTH_SHORT
+                                        ).show()
+                                        dialog.cancel()
+                                    } else {
+                                        Toast.makeText(
+                                            requireContext(),
+                                            "Please fill the gaps",
+                                            Toast.LENGTH_SHORT
+                                        ).show()
                                     }
-                                Toast.makeText(requireContext(), "Saved", Toast.LENGTH_SHORT).show()
-                                dialog.cancel()
-                            }else{
-                                Toast.makeText(requireContext(), "Please fill the gaps", Toast.LENGTH_SHORT).show()
-                            }
-
+                                }
+                            customDialog.findViewById<Button>(R.id.button_cancel)
+                                .setOnClickListener {
+                                    dialog.cancel()
+                                }
+                            dialog.setView(customDialog)
+                            dialog.show()
                         }
-
-
-
-
-
-                    customDialog.findViewById<Button>(R.id.button_cancel).setOnClickListener {
-                        dialog.cancel()
+                        "Words" -> {
+                            findNavController().navigate(R.id.action_settingsFragment_to_addWordFragment)
+                        }
                     }
-
-
-                    dialog.setView(customDialog)
-                    dialog.show()
+                    true
                 }
-                "Words" -> {
-                    findNavController().navigate(R.id.action_settingsFragment_to_addWordFragment)
+                else -> {
+                    false
                 }
             }
         }
-
-
     }
 
     private fun setLayout() {
@@ -129,7 +124,6 @@ class SettingsFragment : Fragment() {
             }
             R.id.wordFragment -> {
                 addButton = "Words"
-
                 return true
             }
             else -> false
